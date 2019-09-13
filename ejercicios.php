@@ -83,7 +83,7 @@ if ($num % 2 != 0) {
             }
             
         }
-        echo $a;        
+               
         echo "<br>";
     }
     
