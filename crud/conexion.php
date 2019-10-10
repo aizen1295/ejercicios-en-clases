@@ -12,3 +12,4 @@ function conectar()
     return $con;
 
 }
+
