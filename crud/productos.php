@@ -24,6 +24,9 @@
         <li class="nav-item">
           <a class="nav-link" href="usuarios.php">usuairos</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="pedidos.php">pedidos</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -69,23 +72,27 @@
           <th scope="col">id</th>
           <th scope="col">nombre</th>
           <th scope="col">valor</th>
+          
 
         </tr>
       </thead>
       <tbody>
 
           <?php
+          $suma =0;
 
 $con = conectar();
 $sql = "SELECT * FROM productos";
 $result = mysqli_query($con, $sql);
 while ($file = mysqli_fetch_array($result)) {
+    $suma += $file['valor'];
     ?>
-
+        
         <tr>
           <th scope="row"><?php echo $file['id_producto'] ?></th>
           <td><?php echo $file['nombre'] ?></td>
           <td><?php echo $file['valor'] ?></td>
+          
           <td>
             <a href="#" class="btn btn-info" data-toggle="modal" data-target="#modaleditar<?php echo $file['id_producto'] ?>">editar</a>
             <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalelimina<?php echo $file['id_producto'] ?>">eliminar</a>
@@ -151,6 +158,7 @@ while ($file = mysqli_fetch_array($result)) {
 </tbody>
     </table>
   </div>
+  <!-- <?php echo $suma ?> -->
     <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

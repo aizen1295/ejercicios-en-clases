@@ -25,16 +25,16 @@
           <a class="nav-link" href="productos.php">productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">usuairos</a>
+          <a class="nav-link" href="usuarios.php">usuairos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="pedidos.php">pedidos</a>
+          <a class="nav-link" href="#">pedidos</a>
         </li>
       </ul>
     </div>
   </nav>
   <div class="col my-2">
-    <h1>usuarios</h1>
+    <h1>Pedidos</h1>
   </div>
 
   <div class="container">
@@ -56,13 +56,13 @@
                                   <input type="text" name="nombre" id="" class="form-control" placeholder="nombre" >
                                 </div>
                                 <div class="form-group">
-                                  <input type="text" name="usuario" id="" class="form-control" placeholder="usuario" >
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" name="contrasena" id="" class="form-control" placeholder="contraseña" >
-                                </div>
-                                <div class="form-group">
                                   <input type="text" name="direccion" id="" class="form-control" placeholder="direccion" >
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" name="telefono" id="" class="form-control" placeholder="telefono" >
+                                </div>
+                                
+                                
                                 </div>
                                 <div class="form-group">
                                   <input type="text" name="edad" id="" class="form-control" placeholder="edad" >
@@ -115,76 +115,7 @@ while ($file = mysqli_fetch_array($result)) {
           <td><?php echo $file['edad'] ?></td>
           <td><?php echo $file['genero'] ?></td>
           <td><?php echo $file['id_roles'] ?></td>
-          <td>
-            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#modaleditar<?php echo $file['id_usuario'] ?>">editar</a>
-            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalelimina<?php echo $file['id_usuario'] ?>">eliminar</a>  
-          </td>
-
-        </tr>
-        <div class="modal fade" id="modaleditar<?php echo $file['id_usuario'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-              
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">editar</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                
-                <div class="modal-body">
-                  <div class="container">
-                  <form action="editar.php" method="post" >
-                          <div class="form-group">
-                            <input type="text" value="<?php echo $file['nombre'] ?>" name="nombre" id="" class="form-control" placeholder="nombre" >
-                          </div>
-                          <div class="form-group">
-                            <input type="text" value="<?php echo $file['usuario'] ?>" name="usuario" id="" class="form-control" placeholder="usuario" >
-                          </div>
-                          <div class="form-group">
-                            <input type="text" value="<?php echo $file['contrasena'] ?>" name="contrasena" id="" class="form-control" placeholder="contraseña" >
-                          </div>
-                          <div class="form-group">
-                            <input type="text" value="<?php echo $file['direccion'] ?>" name="direccion" id="" class="form-control" placeholder="direccion" >
-                          </div>
-                          <div class="form-group">
-                            <input type="text" value="<?php echo $file['edad'] ?>" name="edad" id="" class="form-control" placeholder="edad" >
-                          </div>
-                          <div class="form-group">
-                            <input type="text" value="<?php echo $file['genero'] ?>" name="genero" id="" class="form-control" placeholder="genero" >
-                          </div>
-                          <input type="hidden" value="<?php echo $file['id_usuario'] ?>" name="id">
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-info">editar</button>
-                </div>
-              </form>
-              </div>
-            </div>
-          </div>
-        <!-- Modal -->
-          <div class="modal fade" id="modalelimina<?php echo $file['id_usuario'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">eliminar</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    quiere eliminar el usuario
-                    <?php echo $file['nombre'] ?>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <a href="eliminar.php?ID=<?php echo $file['id_usuario'] ?>" class="btn btn-danger">Eliminar</a>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         <?php
 }
 
